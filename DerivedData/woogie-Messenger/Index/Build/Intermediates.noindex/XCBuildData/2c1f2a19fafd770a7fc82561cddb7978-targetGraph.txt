@@ -1,3 +1,0 @@
-Target dependency graph (2 targets)
-woogie-Messenger in woogie-Messenger, no dependencies
-woogie-Messenger in woogie-Messenger, no dependencies
