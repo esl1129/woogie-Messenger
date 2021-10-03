@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25934AF48D386CAA812992AC /* Pods_woogie_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB60BC62D6F951C5617E250 /* Pods_woogie_Messenger.framework */; };
 		6CB390322709868500622E6C /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB390312709868500622E6C /* extensions.swift */; };
 		6CC66EE62709416B000E6C19 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC66EE52709416B000E6C19 /* LoginViewController.swift */; };
 		6CC66EE82709417D000E6C19 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC66EE72709417D000E6C19 /* RegisterViewController.swift */; };
@@ -24,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0508642A4713095FE1084BB0 /* Pods-woogie-Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-woogie-Messenger.release.xcconfig"; path = "Target Support Files/Pods-woogie-Messenger/Pods-woogie-Messenger.release.xcconfig"; sourceTree = "<group>"; };
+		2A69A43ADD32C69765225334 /* Pods-woogie-Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-woogie-Messenger.debug.xcconfig"; path = "Target Support Files/Pods-woogie-Messenger/Pods-woogie-Messenger.debug.xcconfig"; sourceTree = "<group>"; };
+		2CB60BC62D6F951C5617E250 /* Pods_woogie_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_woogie_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB390312709868500622E6C /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		6CC66EE52709416B000E6C19 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6CC66EE72709417D000E6C19 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -47,12 +51,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25934AF48D386CAA812992AC /* Pods_woogie_Messenger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17664B58432E2CA272CF2063 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2A69A43ADD32C69765225334 /* Pods-woogie-Messenger.debug.xcconfig */,
+				0508642A4713095FE1084BB0 /* Pods-woogie-Messenger.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		46EECC75FA36B5D5EE10250F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2CB60BC62D6F951C5617E250 /* Pods_woogie_Messenger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6CB39030270983A800622E6C /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +145,8 @@
 			children = (
 				6CC9B13C2707400700FF01A8 /* woogie-Messenger */,
 				6CC9B13B2707400700FF01A8 /* Products */,
+				17664B58432E2CA272CF2063 /* Pods */,
+				46EECC75FA36B5D5EE10250F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,9 +179,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6CC9B1512707400C00FF01A8 /* Build configuration list for PBXNativeTarget "woogie-Messenger" */;
 			buildPhases = (
+				7F6CC521492DE2C15E834772 /* [CP] Check Pods Manifest.lock */,
 				6CC9B1362707400700FF01A8 /* Sources */,
 				6CC9B1372707400700FF01A8 /* Frameworks */,
 				6CC9B1382707400700FF01A8 /* Resources */,
+				2CD6D043D02A94FD5D461C40 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -212,6 +239,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2CD6D043D02A94FD5D461C40 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-woogie-Messenger/Pods-woogie-Messenger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-woogie-Messenger/Pods-woogie-Messenger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-woogie-Messenger/Pods-woogie-Messenger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F6CC521492DE2C15E834772 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-woogie-Messenger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6CC9B1362707400700FF01A8 /* Sources */ = {
@@ -372,6 +441,7 @@
 		};
 		6CC9B1522707400C00FF01A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A69A43ADD32C69765225334 /* Pods-woogie-Messenger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -402,6 +472,7 @@
 		};
 		6CC9B1532707400C00FF01A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0508642A4713095FE1084BB0 /* Pods-woogie-Messenger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
