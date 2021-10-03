@@ -1,3 +1,9 @@
-/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/ViewController.swift
-/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/AppDelegate.swift
-/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/SceneDelegate.swift
+/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/Controllers/ConversationsViewController.swift
+/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/Resources/AppDelegate.swift
+/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/Controllers/ProfileViewController.swift
+/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/Resources/SceneDelegate.swift
+/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/Controllers/PhotoViewerViewController.swift
+/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/Controllers/RegisterViewController.swift
+/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/Controllers/VideoPlayerViewController.swift
+/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/Controllers/NewConversationViewController.swift
+/Users/jaewook/Documents/IOS-Dev/woogie-Messenger/woogie-Messenger/Controllers/LoginViewController.swift
