@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
     
@@ -69,6 +70,9 @@ class LoginViewController: UIViewController {
         return imageView
     }()
     
+    private let facebookLoginButton = FBLoginButton()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Log In"
@@ -80,6 +84,7 @@ class LoginViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         emailField.delegate = self
         passwordField.delegate = self
+        facebookLoginButton.delegate = self
         
         //Add subviews
         view.addSubview(scrollView)
@@ -87,6 +92,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
+        scrollView.addSubview(facebookLoginButton)
         
         
     }
@@ -100,7 +106,7 @@ class LoginViewController: UIViewController {
         emailField.frame = CGRect(x: 30, y: imageView.bottom+20, width: scrollView.width-60, height: 52)
         passwordField.frame = CGRect(x: 30, y: emailField.bottom+10, width: scrollView.width-60, height: 52)
         loginButton.frame = CGRect(x: 30, y: passwordField.bottom+30, width: scrollView.width-60, height: 52)
-        
+        facebookLoginButton.frame = CGRect(x: 30, y: loginButton.bottom+50, width: scrollView.width-60, height: 52)
         
     }
     
@@ -153,4 +159,24 @@ extension LoginViewController: UITextFieldDelegate{
         return true
         
     }
+}
+
+extension LoginViewController: LoginButtonDelegate{
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        // no operation
+    }
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        guard let token = result?.token?.tokenString else{
+            print("User failed to log in with facebook")
+            return
+        }
+        
+        let credential = FacebookAuthProvider.credential(withAccessToken: token)
+        
+        FirebaseAuth.Auth.auth().signIn(with: credential, completion: { authResult, error in
+            
+        })
+    }
+    
 }

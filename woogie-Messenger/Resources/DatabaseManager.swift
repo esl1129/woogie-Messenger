@@ -15,16 +15,11 @@ final class DatabaseManager{
 
 // MARK: - Account Management
 extension DatabaseManager{
-    /// Inserts new user to database
-    public func insertUser(with user: ChatAppUser){
-        database.child("users").child(user.safeEmail).setValue([
-            "first_name" : user.firstName,
-            "last_name" : user.lastName,
-        ])
-    }
+    
     
     public func userExists(with email: String, completion: @escaping ((Bool) -> Void)){
-        database.child("users").child(email).observeSingleEvent(of: .value, with: { snapshot in
+        let safeEmail = email.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
+        database.child(safeEmail).observeSingleEvent(of: .value, with: { snapshot in
             guard snapshot.value as? String != nil else {
                 completion(false)
                 return
@@ -33,7 +28,13 @@ extension DatabaseManager{
             completion(true)
         })
     }
-    
+    /// Inserts new user to database
+    public func insertUser(with user: ChatAppUser){
+        database.child(user.safeEmail).setValue([
+            "first_name" : user.firstName,
+            "last_name" : user.lastName,
+        ])
+    }
 }
 
 struct ChatAppUser{
@@ -45,5 +46,5 @@ struct ChatAppUser{
         let safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
         return safeEmail
     }
-//    let profilePictureURL: String
+    //    let profilePictureURL: String
 }

@@ -169,8 +169,7 @@ class RegisterViewController: UIViewController {
             
             guard !exists else{
                 // user already exists
-                self?.alertUserLoginError(message: "Looks like a user account for that email address already exists")
-
+                strongSelf.alertUserLoginError(message: "Looks like a user account for that email address already exists")
                 return
             }
             
