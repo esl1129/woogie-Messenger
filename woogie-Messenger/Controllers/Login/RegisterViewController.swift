@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     
@@ -79,7 +80,7 @@ class RegisterViewController: UIViewController {
     
     private let registerButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Register", for: .normal)
         button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
@@ -153,12 +154,25 @@ class RegisterViewController: UIViewController {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
         
-        guard let firstName = firstNameField.text, let lastName = lastNameField.text,  let email = emailField.text, let password = passwordField.text, !firstName.isEmpty, !lastName.isEmpty, !email.isEmpty, !password.isEmpty, password.count >= 6 else{
+        guard let firstName = firstNameField.text,
+                let lastName = lastNameField.text,
+                let email = emailField.text,
+                let password = passwordField.text,
+                !firstName.isEmpty, !lastName.isEmpty, !email.isEmpty, !password.isEmpty, password.count >= 6 else{
             alertUserLoginError()
             return
         }
         
         // Firebase Register
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
+            guard let result = authResult, error == nil else{
+                print("Error creating User")
+                return
+            }
+            
+            let user = result.user
+            print("Create User : \(user)")
+        })
     }
     
     func alertUserLoginError() {
@@ -166,11 +180,6 @@ class RegisterViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert,animated: true)
-    }
-    @objc private func didTapRegister(){
-        let vc = RegisterViewController()
-        vc.title = "Create Account"
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

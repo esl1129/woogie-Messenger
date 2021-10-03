@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		25934AF48D386CAA812992AC /* Pods_woogie_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB60BC62D6F951C5617E250 /* Pods_woogie_Messenger.framework */; };
 		6CB390322709868500622E6C /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB390312709868500622E6C /* extensions.swift */; };
+		6CB390342709AF7F00622E6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CB390332709AF7F00622E6C /* GoogleService-Info.plist */; };
 		6CC66EE62709416B000E6C19 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC66EE52709416B000E6C19 /* LoginViewController.swift */; };
 		6CC66EE82709417D000E6C19 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC66EE72709417D000E6C19 /* RegisterViewController.swift */; };
 		6CC66EEA2709419E000E6C19 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC66EE92709419E000E6C19 /* PhotoViewerViewController.swift */; };
@@ -29,6 +30,7 @@
 		2A69A43ADD32C69765225334 /* Pods-woogie-Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-woogie-Messenger.debug.xcconfig"; path = "Target Support Files/Pods-woogie-Messenger/Pods-woogie-Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		2CB60BC62D6F951C5617E250 /* Pods_woogie_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_woogie_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB390312709868500622E6C /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		6CB390332709AF7F00622E6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6CC66EE52709416B000E6C19 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6CC66EE72709417D000E6C19 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		6CC66EE92709419E000E6C19 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +66,6 @@
 				2A69A43ADD32C69765225334 /* Pods-woogie-Messenger.debug.xcconfig */,
 				0508642A4713095FE1084BB0 /* Pods-woogie-Messenger.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -161,6 +162,7 @@
 		6CC9B13C2707400700FF01A8 /* woogie-Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				6CB390332709AF7F00622E6C /* GoogleService-Info.plist */,
 				6CC66EE32709402D000E6C19 /* Resources */,
 				6CC66EE22709401A000E6C19 /* ViewModels */,
 				6CC66EE12709400B000E6C19 /* Views */,
@@ -233,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CC9B14D2707400C00FF01A8 /* LaunchScreen.storyboard in Resources */,
+				6CB390342709AF7F00622E6C /* GoogleService-Info.plist in Resources */,
 				6CC9B14A2707400C00FF01A8 /* Assets.xcassets in Resources */,
 				6CC9B1452707400700FF01A8 /* Main.storyboard in Resources */,
 			);
