@@ -10,6 +10,7 @@
 		25934AF48D386CAA812992AC /* Pods_woogie_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CB60BC62D6F951C5617E250 /* Pods_woogie_Messenger.framework */; };
 		6CB390322709868500622E6C /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB390312709868500622E6C /* extensions.swift */; };
 		6CB390342709AF7F00622E6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6CB390332709AF7F00622E6C /* GoogleService-Info.plist */; };
+		6CB390362709B94400622E6C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB390352709B94400622E6C /* DatabaseManager.swift */; };
 		6CC66EE62709416B000E6C19 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC66EE52709416B000E6C19 /* LoginViewController.swift */; };
 		6CC66EE82709417D000E6C19 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC66EE72709417D000E6C19 /* RegisterViewController.swift */; };
 		6CC66EEA2709419E000E6C19 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC66EE92709419E000E6C19 /* PhotoViewerViewController.swift */; };
@@ -31,6 +32,7 @@
 		2CB60BC62D6F951C5617E250 /* Pods_woogie_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_woogie_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB390312709868500622E6C /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		6CB390332709AF7F00622E6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6CB390352709B94400622E6C /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		6CC66EE52709416B000E6C19 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6CC66EE72709417D000E6C19 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		6CC66EE92709419E000E6C19 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				6CC9B13D2707400700FF01A8 /* AppDelegate.swift */,
 				6CC9B13F2707400700FF01A8 /* SceneDelegate.swift */,
 				6CB390312709868500622E6C /* extensions.swift */,
+				6CB390352709B94400622E6C /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				6CC66EEA2709419E000E6C19 /* PhotoViewerViewController.swift in Sources */,
 				6CC66EE82709417D000E6C19 /* RegisterViewController.swift in Sources */,
 				6CC66EEC270941AD000E6C19 /* VideoPlayerViewController.swift in Sources */,
+				6CB390362709B94400622E6C /* DatabaseManager.swift in Sources */,
 				6CC66EEE270941D8000E6C19 /* NewConversationViewController.swift in Sources */,
 				6CC66EE62709416B000E6C19 /* LoginViewController.swift in Sources */,
 				6CC9B1482707400700FF01A8 /* woogie_Messenger.xcdatamodeld in Sources */,
