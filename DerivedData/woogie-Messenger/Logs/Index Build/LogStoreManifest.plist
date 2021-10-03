@@ -5,6 +5,41 @@
 	<key>logFormatVersion</key>
 	<integer>10</integer>
 	<key>logs</key>
-	<dict/>
+	<dict>
+		<key>E2C0D5B4-D0AA-4B23-B2EE-D753A44937AC</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.IndexBuildLog</string>
+			<key>fileName</key>
+			<string>E2C0D5B4-D0AA-4B23-B2EE-D753A44937AC.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>S</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>Index Build</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Index Build</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>0</integer>
+			<key>signature</key>
+			<string>woogie-Messenger Build Preparation</string>
+			<key>timeStartedRecording</key>
+			<real>654786579.79083598</real>
+			<key>timeStoppedRecording</key>
+			<real>654786580.08618104</real>
+			<key>title</key>
+			<string>woogie-Messenger Build Preparation</string>
+			<key>uniqueIdentifier</key>
+			<string>E2C0D5B4-D0AA-4B23-B2EE-D753A44937AC</string>
+		</dict>
+	</dict>
 </dict>
 </plist>
