@@ -195,6 +195,8 @@
 			dependencies = (
 			);
 			name = "woogie-Messenger";
+			packageProductDependencies = (
+			);
 			productName = "woogie-Messenger";
 			productReference = 6CC9B13A2707400700FF01A8 /* woogie-Messenger.app */;
 			productType = "com.apple.product-type.application";
@@ -223,6 +225,8 @@
 				Base,
 			);
 			mainGroup = 6CC9B1312707400700FF01A8;
+			packageReferences = (
+			);
 			productRefGroup = 6CC9B13B2707400700FF01A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -457,6 +461,8 @@
 				DEVELOPMENT_TEAM = C3V7CV8375;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "woogie-Messenger/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please Allow access to take a Profile Picture.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please Allow access to select a photo for your Profile.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -468,7 +474,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jaewook.woogie-Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -488,6 +494,8 @@
 				DEVELOPMENT_TEAM = C3V7CV8375;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "woogie-Messenger/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please Allow access to take a Profile Picture.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please Allow access to select a photo for your Profile.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -499,7 +507,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "jaewook.woogie-Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
