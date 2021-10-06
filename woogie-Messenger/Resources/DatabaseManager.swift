@@ -8,6 +8,25 @@
 import Foundation
 import FirebaseDatabase
 
+struct ChatAppUser{
+    let firstName: String
+    let lastName: String
+    let emailAddress: String
+    
+    var safeEmail: String{
+        let safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
+        return safeEmail
+    }
+    var profilePictureFileName: String{
+        // wook-gmail-com_profile_picture.png
+        return "\(safeEmail)_profile_picture.png"
+    }
+}
+
+public enum DatabaseErrors: Error{
+    case failedToFetch
+}
+
 final class DatabaseManager{
     static let shared = DatabaseManager()
     private let database = Database.database().reference()
@@ -85,21 +104,27 @@ extension DatabaseManager{
         })
     }
 }
-struct ChatAppUser{
-    let firstName: String
-    let lastName: String
-    let emailAddress: String
-    
-    var safeEmail: String{
-        let safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
-        return safeEmail
+
+// MARK: - Sending messages / Conversations
+extension DatabaseManager{
+    /// Creates a new conversatin with target user email and first message sent
+    public func createNewConversation(with otherUserEmail: String, firstMessage: Message, completion: @escaping (Bool) -> Void){
+        
     }
-    var profilePictureFileName: String{
-        // wook-gmail-com_profile_picture.png
-        return "\(safeEmail)_profile_picture.png"
+    
+    /// Fetches and returns all conversations for the user with passed in email
+    public func getAllConversations(for email: String, completion: @escaping (Result<String, Error>) -> Void){
+        
+    }
+    
+    /// Gets all messages for a given conversation
+    public func getAllMessagesForConversation(with id: String, completion: @escaping (Result<String,Error>) -> Void){
+        
+    }
+    
+    /// Sends a message with target conversation and message
+    public func sendMessage(to conversation: String, message: Message, completion: @escaping (Bool) -> Void){
+        
     }
 }
 
-public enum DatabaseErrors: Error{
-    case failedToFetch
-}

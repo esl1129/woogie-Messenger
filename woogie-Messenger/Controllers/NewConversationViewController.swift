@@ -8,6 +8,7 @@
 import UIKit
 import JGProgressHUD
 class NewConversationViewController: UIViewController {
+    public var completion: (([String: String]) -> (Void))?
     private let spinner = JGProgressHUD(style: .dark)
     
     private let searchBar: UISearchBar = {
@@ -79,6 +80,10 @@ extension NewConversationViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         // start Conversation
+        let targetUserData = results[indexPath.row]
+        dismiss(animated: true, completion: { [weak self] in
+            self?.completion?(targetUserData)
+        })
     }
 }
 
