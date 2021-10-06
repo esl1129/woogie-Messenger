@@ -7,9 +7,11 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class RegisterViewController: UIViewController {
-    
+    private let spinner = JGProgressHUD(style: .dark)
+
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
@@ -101,12 +103,15 @@ class RegisterViewController: UIViewController {
         
         return imageView
     }()
-    
+}
+
+
+// MARK: - Init (ViewDidLoad & ViewDidLayoutSubviews
+extension RegisterViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Create Account"
         view.backgroundColor = .systemBackground
-        
         
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         emailField.delegate = self
@@ -124,14 +129,10 @@ class RegisterViewController: UIViewController {
         imageView.isUserInteractionEnabled = true
         scrollView.isUserInteractionEnabled = true
         
-        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePicture))
         imageView.addGestureRecognizer(gesture)
     }
     
-    @objc private func didTapChangeProfilePicture(){
-        presentPhotoActionSheet()
-    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
@@ -144,8 +145,22 @@ class RegisterViewController: UIViewController {
         emailField.frame = CGRect(x: 30, y: lastNameField.bottom+10, width: scrollView.width-60, height: 52)
         passwordField.frame = CGRect(x: 30, y: emailField.bottom+10, width: scrollView.width-60, height: 52)
         registerButton.frame = CGRect(x: 30, y: passwordField.bottom+30, width: scrollView.width-60, height: 52)
+    }
+}
+// MARK: - Alert
+extension RegisterViewController{
+    func alertUserLoginError(message: String = "Please Enter all information to create a new Account") {
+        let alert = UIAlertController(title: "Woops", message: message, preferredStyle: .alert)
         
-        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert,animated: true)
+    }
+}
+
+// MARK: - ButtonTapped (@objc ChangeProfile & Register)
+extension RegisterViewController{
+    @objc private func didTapChangeProfilePicture(){
+        presentPhotoActionSheet()
     }
     
     @objc private func registerButtonTapped() {
@@ -160,13 +175,15 @@ class RegisterViewController: UIViewController {
                   alertUserLoginError()
                   return
               }
-        
+            self.spinner.show(in: view)
         // Firebase Register
         DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
             guard let strongSelf = self else{
                 return
             }
-            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
+            }
             guard !exists else{
                 // user already exists
                 strongSelf.alertUserLoginError(message: "Looks like a user account for that email address already exists")
@@ -178,21 +195,33 @@ class RegisterViewController: UIViewController {
                     print("Error creating User")
                     return
                 }
-                
-                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
+                let chatUser = ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email)
+                DatabaseManager.shared.insertUser(with: chatUser, completion: {success in
+                    if success{
+                        // upload image
+                        guard let image = strongSelf.imageView.image, let data = image.pngData() else {
+                            return
+                        }
+                        
+                        let fileName = chatUser.profilePictureFileName
+                        StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName, completion: { result in
+                            switch result{
+                            case .success(let downloadUrl):
+                                UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+                                print(downloadUrl)
+                            case .failure(let error):
+                                print("Storage manager error: \(error)")
+                            }
+                        })
+                    }
+                })
                 strongSelf.navigationController?.dismiss(animated: true)
             })
         })
     }
-    
-    func alertUserLoginError(message: String = "Please Enter all information to create a new Account") {
-        let alert = UIAlertController(title: "Woops", message: message, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        present(alert,animated: true)
-    }
 }
 
+// MARK: - TextField Delegate
 extension RegisterViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -206,8 +235,8 @@ extension RegisterViewController: UITextFieldDelegate{
     }
 }
 
+// MARK: - Profile Image
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-    
     func presentPhotoActionSheet(){
         let actionSheet = UIAlertController(title: "Profile Picture", message: "How would you like to select a picture?", preferredStyle: .actionSheet)
         
@@ -220,7 +249,6 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         }))
         
         present(actionSheet, animated: true)
-        
     }
     
     func presentCamera(){
