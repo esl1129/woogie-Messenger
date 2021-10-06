@@ -10,6 +10,14 @@
 				<string>fb679580809693345</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.385526440158-pccbv38o8b8s67m5n1rpl2b894nklvev</string>
+			</array>
+		</dict>
 	</array>
 	<key>FacebookAppID</key>
 	<string>679580809693345</string>
@@ -17,13 +25,13 @@
 	<string>a94e8ae3feb7ace3f59a1c16e61d7ffd</string>
 	<key>FacebookDisplayName</key>
 	<string>Woogie Messenger</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
