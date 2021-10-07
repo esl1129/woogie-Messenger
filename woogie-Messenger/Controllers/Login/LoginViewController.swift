@@ -68,8 +68,6 @@ class LoginViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
         imageView.contentMode = .scaleAspectFit
-        
-        
         return imageView
     }()
     
@@ -167,7 +165,23 @@ extension LoginViewController{
             }
             
             let user = result.user
+            let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+            DatabaseManager.shared.getDataFor(path: safeEmail, completion: { result in
+                switch result{
+                case .success(let data):
+                    guard let userData = data as? [String: Any],
+                          let firstName = userData["first_name"] as? String,
+                          let lastName = userData["last_name"] as? String else{
+                        return
+                    }
+                    UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
+
+                case .failure(let error):
+                    print("Failed to read data with error: \(error)")
+                }
+            })
             UserDefaults.standard.set(email, forKey: "email")
+
             print("Logged In User : \(user)")
             strongSelf.navigationController?.dismiss(animated: true)
         })
@@ -217,15 +231,16 @@ extension LoginViewController: LoginButtonDelegate{
             
             guard let firstName = result["first_name"] as? String,
                   let lastName = result["last_name"] as? String,
+                  let email = result["email"] as? String,
                   let picture = result["picture"] as? [String: Any],
                   let data = picture["data"] as? [String: Any],
-                  let pictureUrl = data["url"] as? String,
-                  let email = result["email"] as? String else{
+                  let pictureUrl = data["url"] as? String else{
                       print("Failed to get email and name from fb result")
                       return
                   }
             UserDefaults.standard.set(email, forKey: "email")
-            
+            UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
+
             DatabaseManager.shared.userExists(with: email, completion: { exists in
                 if !exists{
                     let chatUser = ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email)
@@ -257,8 +272,6 @@ extension LoginViewController: LoginButtonDelegate{
                             }).resume()
                         }
                     })
-                    //                    DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
-                    
                 }
             })
             

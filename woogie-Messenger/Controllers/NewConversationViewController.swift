@@ -130,9 +130,7 @@ extension NewConversationViewController: UISearchBarDelegate{
         guard hasFetched else{
             return
         }
-        
         self.spinner.dismiss()
-        
         let results: [[String: String]] = self.users.filter({
             guard let name = $0["name"]?.lowercased() else{
                 return false
