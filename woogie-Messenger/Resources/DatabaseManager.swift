@@ -292,7 +292,7 @@ extension DatabaseManager{
              "date": dateString,
              "sender_email": currentUserEmail,
              "is_read": false,
-             "name": name,
+             "name": name,33
              ]
              */
             let messages: [Message] = value.compactMap({ dictionary in
@@ -309,11 +309,17 @@ extension DatabaseManager{
                 }
                 var kind: MessageKind?
                 if type == "photo"{
-                    guard let imageUrl = URL(string: content), let placeHolder = UIImage(systemName: "plus") else{
+                    guard let imageUrl = URL(string: content), let placeHolder = UIImage(systemName: "eye.slash") else{
                         return nil
                     }
                     let media = Media(url: imageUrl, image: nil, placeholderImage: placeHolder, size: CGSize(width: 200, height: 200))
                     kind = .photo(media)
+                }else if type == "video"{
+                    guard let imageUrl = URL(string: content), let placeHolder = UIImage(named: "video_placeholder") else{
+                        return nil
+                    }
+                    let media = Media(url: imageUrl, image: nil, placeholderImage: placeHolder, size: CGSize(width: 200, height: 200))
+                    kind = .video(media)
                 }else{
                     kind = .text(content)
                 }
@@ -324,7 +330,6 @@ extension DatabaseManager{
                 return Message(sender: sender, messageId: messageId, sentDate: date, kind: finalKind)
             })
             completion(.success(messages))
-            
         })
     }
     
@@ -354,6 +359,10 @@ extension DatabaseManager{
             case .text(let messageText):
                 message = messageText
             case .photo(let mediaItem):
+                if let targetUrlString = mediaItem.url?.absoluteString{
+                    message = targetUrlString
+                }
+            case .video(let mediaItem):
                 if let targetUrlString = mediaItem.url?.absoluteString{
                     message = targetUrlString
                 }
@@ -450,6 +459,40 @@ extension DatabaseManager{
                 })
             }
         })
+    }
+    
+    public func deleteConversation(conversationId: String, completion: @escaping (Bool) -> Void){
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else{
+            return
+        }
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+        print("Deleting conversation with id: \(conversationId)")
+        // Get all conversations for current user
+        // delete Conversation in collection with target id
+        // reset Conversations for the user in database
+        let ref = database.child("\(safeEmail)/conversations")
+        ref.observeSingleEvent(of: .value){ snapshot in
+            if var conversations = snapshot.value as? [[String: Any]] {
+                var positionToRemove = 0
+                for conversation in conversations {
+                    if let id = conversation["id"] as? String, id == conversationId{
+                        print("Found Conversation to delete")
+                        break
+                    }
+                    positionToRemove += 1
+                }
+                conversations.remove(at: positionToRemove)
+                ref.setValue(conversations,withCompletionBlock: { error, _ in
+                    guard error == nil else{
+                        completion(false)
+                        print("Failed to write new conversation array")
+                        return
+                    }
+                    print("Deleted conversation")
+                    completion(true)
+                })
+            }
+        }
     }
 }
 

@@ -33,7 +33,7 @@ extension PhotoViewerViewController{
         super.viewDidLoad()
         title = "Photo"
         navigationItem.largeTitleDisplayMode = .never
-        view.backgroundColor = .black
+        view.backgroundColor = .secondarySystemBackground
         view.addSubview(imageView)
         self.imageView.sd_setImage(with: self.url, completed: nil)
     }
